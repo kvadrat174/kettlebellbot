@@ -101,10 +101,10 @@ def send_text(message):
    # МАГАЗИН - либо слайды, либо тупо список
     elif message.text.lower() == 'магазин':
         bot.send_message(message.chat.id, 'Я пока хз че сюда добавить, но пока изучи ассортимент. Скорее всего сделаем такую сортировку с вот такими товарами всплывающими и с гиперссылкой', reply_markup=keyboard7)
-        photo = open('\\1.jpg', "rb")
+        photo = open('1.jpg', "rb")
         bot.send_photo(message.chat.id, photo, caption= 'Бамперный диск 10кг, 3500р.', reply_markup=keyboard7);
     elif message.text.lower() == 'назад':
-        photo1 = open('\\4.jpg', "rb")
+        photo1 = open('4.jpg', "rb")
         bot.send_photo(message.chat.id, photo1, caption = 'Ты чё, пиздюк, ниче не купил?', reply_markup=keyboard1)
 
 # ОБРАБОТКА КОНТАКТА
