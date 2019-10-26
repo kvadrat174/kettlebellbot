@@ -40,7 +40,9 @@ keyboard7.add(bt_giri,bt_aks,bt_diz,bt_inv,bt_so,bt_sp, bt_bk)
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.send_message(message.chat.id, 'Здравствуйте, вы попали в чат бот онлайн академии гиревого спорта Ивана Денисова. Выберите из меню интересующий Вас вопрос', reply_markup=keyboard1);
+    nm = message.from_user.first_name
+
+    bot.send_message(message.chat.id, 'Здравствуйте,' +str(nm)+ ' , вы попали в чат бот онлайн академии гиревого спорта Ивана Денисова. Выберите из меню интересующий Вас вопрос', reply_markup=keyboard1);
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
