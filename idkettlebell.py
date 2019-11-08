@@ -57,20 +57,20 @@ def send_text(message):
     # SNPRO
     elif message.text.lower() == 'snpro':
         tu = message.from_user.first_name
-        bot.send_message(message.chat.id, '<a href="https://vk.com/kettlebellschool?w=app5898182_-164184252">\n '+str(tu)+' ,рады видеть Вас на SNPRO, по ссылке Вас ждет бесплатный интенсив от Ивана Денисова!')
+        bot.send_message(message.chat.id, '<a href="https://vk.com/kettlebellschool?w=app5898182_-164184252">\n '+str(tu)+' ,рады видеть Вас на SNPRO, по ссылке Вас ждет бесплатный интенсив от Ивана Денисова!',reply_markup=keyboard1)
 
         # любитель
     elif message.text.lower() == 'любитель':
         bot.send_message(message.chat.id, 'Вы хотите оплатить весь курс со скидкой 30% или оформить обучение в рассрочку?', reply_markup=keyboard4)
     elif message.text.lower() == 'полностью (любитель)':
         bot.send_message(message.chat.id, '<a href="https://kettlebellschool.com/#rec99375761">Перейти на сайт курса</a>',
-                         parse_mode="HTML");
+                         parse_mode="HTML",reply_markup=keyboard1);
     elif message.text.lower() == 'в рассрочку (любитель)':
         bot.send_message(message.chat.id, '<a href="https://kettlebellschool.com/#rec99375761">Перейти на сайт курса</a>',
-                         parse_mode="HTML");
+                         parse_mode="HTML",reply_markup=keyboard1);
     elif message.text.lower() == 'о курсе':
         bot.send_message(message.chat.id, '<a href="https://kettlebellschool.com/">Перейти на сайт курса</a>',
-                         parse_mode="HTML");
+                         parse_mode="HTML",reply_markup=keyboard1);
 
 
 
@@ -79,10 +79,10 @@ def send_text(message):
             bot.send_message(message.chat.id, 'Вы хотите оплатить весь курс со скидкой 30% или оформить обучение в рассрочку?', reply_markup=keyboard5)
     elif message.text.lower() == 'полностью (спортсмен)':
         bot.send_message(message.chat.id, '<a href="https://kettlebellschool.com/#rec99375761">Перейти на сайт курса</a>',
-                         parse_mode="HTML");
+                         parse_mode="HTML",reply_markup=keyboard1);
     elif message.text.lower() == 'в рассрочку (спортсмен)':
         bot.send_message(message.chat.id, '<a href="https://kettlebellschool.com/#rec99375761">Перейти на сайт курса</a>',
-                         parse_mode="HTML");
+                         parse_mode="HTML",reply_markup=keyboard1);
 
 
     # тренер
@@ -90,10 +90,10 @@ def send_text(message):
             bot.send_message(message.chat.id, 'Вы хотите оплатить весь курс со скидкой 30% или оформить обучение в рассрочку?', reply_markup=keyboard6)
     elif message.text.lower() == 'полностью (тренер)':
         bot.send_message(message.chat.id, '<a href="https://kettlebellschool.com/#rec99375761">Перейти на сайт курса</a>',
-                         parse_mode="HTML");
+                         parse_mode="HTML",reply_markup=keyboard1);
     elif message.text.lower() == 'в рассрочку (тренер)':
         bot.send_message(message.chat.id, '<a href="https://kettlebellschool.com/#rec99375761">Перейти на сайт курса</a>',
-                         parse_mode="HTML");
+                         parse_mode="HTML",reply_markup=keyboard1);
 
 
     # СЕМИНАР
@@ -127,7 +127,7 @@ def CONTACTS(message): # получаем данные клиента
     print(c)
     print(a)
 
-    bot.send_message(conf.bossid, ''+str(b)+' телефон, '+str(c)+' имя ' )
+    bot.send_message(conf.bossid, ''+str(b)+' телефон, '+str(c)+' имя ',reply_markup=keyboard1 )
 
 
 
