@@ -57,7 +57,7 @@ def send_text(message):
     # SNPRO
     elif message.text.lower() == 'snpro':
         tu = message.from_user.first_name
-        bot.send_message(message.chat.id, '<a href="https://vk.com/kettlebellschool?w=app5898182_-164184252">\n '+str(tu)+' ,рады видеть Вас на SNPRO, по ссылке Вас ждет бесплатный интенсив от Ивана Денисова!',reply_markup=keyboard1)
+        bot.send_message(message.chat.id, '<a href="https://vk.com/kettlebellschool?w=app5898182_-164184252">\n '+str(tu)+' ,рады видеть Вас на SNPRO, по ссылке Вас ждет бесплатный интенсив от Ивана Денисова!',parse_mode="HTML", reply_markup=keyboard1)
 
         # любитель
     elif message.text.lower() == 'любитель':
