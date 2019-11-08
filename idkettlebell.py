@@ -11,12 +11,13 @@ bot = telebot.TeleBot(conf.TOKEN)
 
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
+bt0 = telebot.types.KeyboardButton('SNPRO')
 bt1 = telebot.types.KeyboardButton('Обучение')
 bt2 = telebot.types.KeyboardButton('Магазин')
 bt3 = telebot.types.KeyboardButton('Консультация',request_contact=True)
 bt4 = telebot.types.KeyboardButton('Посетить семинар')
 bt5 = telebot.types.KeyboardButton('Полезный материал')
-keyboard1.add(bt1, bt2, bt3, bt4, bt5)
+keyboard1.add(bt0, bt1, bt2, bt3, bt4, bt5)
 keyboard2 = telebot.types.ReplyKeyboardMarkup(True, True)
 keyboard2.row('Любитель', 'Выступающий спортсмен', 'Тренер')
 keyboard3 = telebot.types.ReplyKeyboardMarkup(True, True)
@@ -53,6 +54,10 @@ def send_text(message):
         print(tm)
         print(tu)
         bot.send_message(message.chat.id, 'Какой уровень Вас интересует?', reply_markup=keyboard2 )
+    # SNPRO
+    elif message.text.lower() == 'snpro':
+        tu = message.from_user.first_name
+        bot.send_message(message.chat.id, '<a href="https://vk.com/kettlebellschool?w=app5898182_-164184252">\n '+str(tu)+' ,рады видеть Вас на SNPRO, по ссылке Вас ждет бесплатный интенсив от Ивана Денисова!')
 
         # любитель
     elif message.text.lower() == 'любитель':
