@@ -129,7 +129,7 @@ def send_text(message):
 
    # МАГАЗИН - либо слайды, либо тупо список
     elif message.text.lower() == 'магазин':
-        bot.send.message(message.chat.id, '<a href="https://idkbc.com/shop/">Ознакомьтесь со всеми товарами на сайте!</a>', parse_mode="HTML", reply_markup=keyboard1)
+        bot.send_message(message.chat.id, '<a href="https://idkbc.com/shop/">Ознакомьтесь со всеми товарами на сайте!</a>', parse_mode="HTML", reply_markup=keyboard1)
         """bot.send_message(message.chat.id, 'Я пока хз че сюда добавить, но пока изучи ассортимент. Скорее всего сделаем такую сортировку с вот такими товарами всплывающими и с гиперссылкой', reply_markup=keyboard7)
         photo = open('1.jpg', "rb")
         bot.send_photo(message.chat.id, photo, caption= 'Бамперный диск 10кг, 3500р.', reply_markup=keyboard7);
