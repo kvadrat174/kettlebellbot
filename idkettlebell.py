@@ -7,8 +7,7 @@ import apiclient.discovery
 from oauth2client.service_account import ServiceAccountCredentials
 import telebot
 import datetime
-import gsmod
-import conf1
+import conf
 import requests
 import os
 import gsmod as gm
