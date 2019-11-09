@@ -1,10 +1,24 @@
 #!/usr/bin/env python
 
+import datetime
+import gspread
+import httplib2
+import apiclient.discovery
+from oauth2client.service_account import ServiceAccountCredentials
 import telebot
-import conf
+import datetime
+import gsmod
+import conf1
 import requests
 import os
+import gsmod as gm
+scope = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
 
+credentials = ServiceAccountCredentials.from_json_keyfile_name('creds.json', scope)
+
+sh = gspread.authorize(credentials)
+wks = sh.open("denisov").sheet1
 
 bot = telebot.TeleBot(conf.TOKEN)
 
@@ -28,6 +42,8 @@ keyboard5 = telebot.types.ReplyKeyboardMarkup(True, True)
 keyboard5.row('Полностью (спортсмен)', 'В рассрочку (спортсмен)', 'О курсе')
 keyboard6 = telebot.types.ReplyKeyboardMarkup(True, True)
 keyboard6.row('Полностью (тренер)', 'В рассрочку (тренер)', 'О курсе')
+keyboardsnpro = telebot.types.ReplyKeyboardMarkup(True, row_width=1)
+btcont = telebot.types.KeyboardButton('Оставить контакт', request_contact=True)
 """keyboard7 = telebot.types.ReplyKeyboardMarkup(True, row_width=2)
 bt_giri = telebot.types.KeyboardButton('Гири')
 bt_aks = telebot.types.KeyboardButton('Аксессуары')
@@ -42,6 +58,7 @@ keyboard7.add(bt_giri,bt_aks,bt_diz,bt_inv,bt_so,bt_sp, bt_bk)"""
 @bot.message_handler(commands=['start'])
 def start_message(message):
     nm = message.from_user.first_name
+    ni = message.from_user.id
 
     bot.send_message(message.chat.id, 'Здравствуйте,' +str(nm)+ ' , вы попали в чат бот онлайн академии гиревого спорта Ивана Денисова. Выберите из меню интересующий Вас вопрос', reply_markup=keyboard1);
 
@@ -57,7 +74,14 @@ def send_text(message):
     # SNPRO
     elif message.text.lower() == 'snpro':
         tu = message.from_user.first_name
-        bot.send_message(message.chat.id, '<a href="https://vk.com/kettlebellschool?w=app5898182_-164184252">\n '+str(tu)+' ,рады видеть Вас на SNPRO, по ссылке Вас ждет бесплатный интенсив от Ивана Денисова!</a>',parse_mode="HTML", reply_markup=keyboard1)
+        ti = message.from_user.id
+        val = int();
+        val = wks.cell(1, 1).value
+        wks.update_cell(val, 2, tu)
+        wks.update_cell(val, 3, ti)
+        val1 = (int(val) + 1)
+        wks.update_cell(1,1,val1)
+        bot.send_message(message.chat.id, '<a href="https://vk.com/kettlebellschool?w=app5898182_-164184252">\n '+str(tu)+' ,рады видеть Вас на SNPRO, по ссылке Вас ждет бесплатный интенсив от Ивана Денисова!</a>', parse_mode="HTML", reply_markup=keyboard1)
 
         # любитель
     elif message.text.lower() == 'любитель':
@@ -107,7 +131,7 @@ def send_text(message):
 
    # МАГАЗИН - либо слайды, либо тупо список
     elif message.text.lower() == 'магазин':
-        bot.send_message(message.chat.id, '<a href="https://idkbc.com/shop/">Ознакомьтесь со всеми товарами на сайте!</a>', parse_mode="HTML", reply_markup=keyboard1)
+        bot.send.message(message.chat.id, '<a href="https://idkbc.com/shop/">Ознакомьтесь со всеми товарами на сайте!</a>', parse_mode="HTML", reply_markup=keyboard1)
         """bot.send_message(message.chat.id, 'Я пока хз че сюда добавить, но пока изучи ассортимент. Скорее всего сделаем такую сортировку с вот такими товарами всплывающими и с гиперссылкой', reply_markup=keyboard7)
         photo = open('1.jpg', "rb")
         bot.send_photo(message.chat.id, photo, caption= 'Бамперный диск 10кг, 3500р.', reply_markup=keyboard7);
