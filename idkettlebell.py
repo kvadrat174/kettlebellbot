@@ -10,7 +10,6 @@ import datetime
 import conf
 import requests
 import os
-import gsmod as gm
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
